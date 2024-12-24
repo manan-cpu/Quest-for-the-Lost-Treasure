@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest for the Lost Treasure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .btn {
+            margin: 5px;
+            padding: 10px;
+            background-color: #555;
+            border: 1px solid white;
+            color: white;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #777;
+        }
+        #game-output {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Quest for the Lost Treasure</h1>
+    <div id="game-output">
+        <p>Welcome to the Quest for the Lost Treasure! Choose your path wisely.</p>
+        <button class="btn" onclick="choosePath('left')">Go to the Dark Forest</button>
+        <button class="btn" onclick="choosePath('right')">Go to the Mountain</button>
+    </div>
+
+    <script>
+        function intro() {
+            let gameOutput = document.getElementById("game-output");
+            gameOutput.innerHTML = `
+                <p>Welcome to the Quest for the Lost Treasure! You are an adventurer searching for the legendary Lost Treasure of Eldoria.</p>
+                <p>Your choices will determine the outcome of your quest.</p>
+                <p>You start at the town's square where multiple paths await.</p>
+                <p>There are two paths: one leads into the Dark Forest and the other up the Mountain Path.</p>
+                <button class="btn" onclick="choosePath('left')">Go to the Dark Forest</button>
+                <button class="btn" onclick="choosePath('right')">Go to the Mountain</button>
+                <br>
+                <img src="town_square.png" alt="Town Square" id="location-image">
+            `;
+        }
+
+        // Function to choose a path
+        function choosePath(choice) {
+            let gameOutput = document.getElementById("game-output");
+            if (choice === 'left') {
+                darkForest();
+            } else if (choice === 'right') {
+                mountainPath();
+            }
+        }
+
+        // Dark Forest Path
+        function darkForest() {
+            let gameOutput = document.getElementById("game-output");
+            gameOutput.innerHTML = `
+                <p>You enter the dark forest. Suddenly, you hear a rustling sound. A wild boar appears!</p>
+                <button class="btn" onclick="fightBoar()">Fight the Boar</button>
+                <button class="btn" onclick="runAway()">Run Away</button>
+                <br>
+                <img src="dark_forest.png" alt="Dark Forest" id="location-image">
+                <img src="boar.png" alt="Boar" id="location-image">
+            `;
+        }
+
+        // Fight the Boar
+        function fightBoar() {
+            let outcome = Math.random() < 0.5 ? 'win' : 'lose';
+            let gameOutput = document.getElementById("game-output");
+            if (outcome === 'win') {
+                gameOutput.innerHTML = `
+                    <p>You bravely fight and defeat the boar! You find a small bag of gold in its den.</p>
+                    <button class="btn" onclick="treasureHunt()">Go on a treasure hunt</button>
+                    <button class="btn" onclick="choosePath('left')">Return to the Forest</button>
+                    <br>
+                    <img src="boar_victory.png" alt="Boar Victory" id="location-image">
+                    <img src="boar_defeat.png" alt="Boar Defeated" id="location-image">
+                `;
+            } else {
+                gameOutput.innerHTML = `
+                    <p>The boar overpowers you, and you are injured. You decide to retreat and head back home.</p>
+                    <button class="btn" onclick="gameOver()">Game Over</button>
+                    <br>
+                    <img src="boar_defeat.png" alt="Boar Defeat" id="location-image">
+                `;
+            }
+        }
+
+        // Run Away from the Boar
+        function runAway() {
+            let outcome = Math.random() < 0.5 ? 'catch' : 'escape';
+            let gameOutput = document.getElementById("game-output");
+            if (outcome === 'catch') {
+                gameOutput.innerHTML = `
+                    <p>The boar catches up to you and knocks you down! You are injured and have to return home.</p>
+                    <button class="btn" onclick="gameOver()">Game Over</button>
+                    <br>
+                    <img src="boar_chase.png" alt="Boar Chase" id="location-image">
+                `;
+            } else {
+                gameOutput.innerHTML = `
+                    <p>You manage to escape and return to the crossroads.</p>
+                    <button class="btn" onclick="choosePath('left')">Go to the Dark Forest</button>
+                    <button class="btn" onclick="choosePath('right')">Go to the Mountain</button>
+                    <br>
+                    <img src="crossroads.png" alt="Crossroads" id="location-image">
+                `;
+            }
+        }
+
+        // Treasure Hunt function after defeating the boar
+        function treasureHunt() {
+            let gameOutput = document.getElementById("game-output");
+            let outcome = Math.random() < 0.5 ? 'findTreasure' : 'noTreasure';
+            if (outcome === 'findTreasure') {
+                gameOutput.innerHTML = `
+                    <p>While searching through the forest, you stumble upon a hidden cave! Inside is the Lost Treasure of Eldoria!</p>
+                    <button class="btn" onclick="gameOver()">Game Over - You Win!</button>
+                    <br>
+                    <img src="treasure_found.png" alt="Treasure Found" id="location-image">
+                    <img src="treasure_chest.png" alt="Treasure Chest" id="location-image">
+                `;
+            } else {
+                gameOutput.innerHTML = `
+                    <p>Your treasure hunt leads you nowhere. You feel disappointed but decide to head back home.</p>
+                    <button class="btn" onclick="gameOver()">Game Over</button>
+                    <br>
+                    <img src="no_treasure.png" alt="No Treasure" id="location-image">
+                `;
+            }
+        }
+
+        // Mountain Path
+        function mountainPath() {
+            let gameOutput = document.getElementById("game-output");
+            gameOutput.innerHTML = `
+                <p>You choose the mountain path. The air is cold, and the climb is steep. After hours of climbing, you find a glowing object.</p>
+                <button class="btn" onclick="investigateGlowing()">Investigate the Glowing Object</button>
+                <button class="btn" onclick="climbMountain()">Continue Climbing</button>
+                <br>
+                <img src="mountain_path.png" alt="Mountain Path" id="location-image">
+                <img src="glowing_object.png" alt="Glowing Object" id="location-image">
+            `;
+        }
+
+        // Investigate the Glowing Object
+        function investigateGlowing() {
+            let gameOutput = document.getElementById("game-output");
+            gameOutput.innerHTML = `
+                <p>The glowing object is a mysterious stone with ancient runes. As you touch it, a hidden cave opens nearby!</p>
+                <button class="btn" onclick="caveAdventure()">Enter the Cave</button>
+                <button class="btn" onclick="continuePath()">Continue on the Path</button>
+                <br>
+                <img src="glowing_object.png" alt="Glowing Object" id="location-image">
+                <img src="hidden_cave.png" alt="Hidden Cave" id="location-image">
+            `;
+        }
+
+        // Cave Adventure
+        function caveAdventure() {
+            let gameOutput = document.getElementById("game-output");
+            gameOutput.innerHTML = `
+                <p>Inside the cave, you find a sleeping dragon! Do you try to steal its treasure or sneak past it?</p>
+                <button class="btn" onclick="stealTreasure()">Steal the Treasure</button>
+                <button class="btn" onclick="sneakPast()">Sneak Past the Dragon</button>
+                <br>
+                <img src="sleeping_dragon.png" alt="Sleeping Dragon" id="location-image">
+                <img src="treasure_pile.png" alt="Treasure Pile" id="location-image">
+            `;
+        }
+
+        // Steal Treasure
+        function stealTreasure() {
+            let gameOutput = document.getElementById("game-output");
+            gameOutput.innerHTML = `
+                <p>You try to sneak up on the dragon, but it wakes up and attacks you! The dragon's fire is too powerful, and you are burned.</p>
+                <button class="btn" onclick="gameOver()">Game Over</button>
+                <br>
+                <img src="dragon_attack.png" alt="Dragon Attack" id="location-image">
+                <img src="fire_explosion.png" alt="Fire Explosion" id="location-image">
+            `;
+        }
+
+        // Sneak Past the Dragon
+        function sneakPast() {
+            let gameOutput = document.getElementById("game-output");
+            gameOutput.innerHTML = `
+                <p>You successfully sneak past the dragon and steal its treasure. Congratulations, you've found the Lost Treasure!</p>
+                <button class="btn" onclick="gameOver()">Game Over</button>
+                <br>
+                <img src="treasure_found.png" alt="Treasure Found" id="location-image">
+                <img src="dragon_sneak.png" alt="Sneaking Past Dragon" id="location-image">
+            `;
+        }
+
+        // Continue Path
+        function continuePath() {
+            let gameOutput = document.getElementById("game-output");
+            gameOutput.innerHTML = `
+                <p>You continue on the path and eventually find the Lost Treasure of Eldoria!</p>
+                <button class="btn" onclick="gameOver()">Game Over</button>
+                <br>
+                <img src="treasure_chest.png" alt="Treasure Chest" id="location-image">
+            `;
+        }
+
+        // Climb Mountain
+        function climbMountain() {
+            let gameOutput = document.getElementById("game-output");
+            gameOutput.innerHTML = `
+                <p>You continue climbing and eventually reach the top, where you discover an ancient temple.</p>
+                <button class="btn" onclick="enterTemple()">Enter the Temple</button>
+                <button class="btn" onclick="gameOver()">Leave the Mountain</button>
+                <br>
+                <img src="mountain_peak.png" alt="Mountain Peak" id="location-image">
+                <img src="temple_discovery.png" alt="Temple Discovery" id="location-image">
+            `;
+        }
+
+        // Enter Temple
+        function enterTemple() {
+            let gameOutput = document.getElementById("game-output");
+            gameOutput.innerHTML = `
+                <p>Inside the temple, you find a hidden chamber containing the Lost Treasure! You've won!</p>
+                <button class="btn" onclick="gameOver()">Game Over - You Win!</button>
+                <br>
+                <img src="temple_interior.png" alt="Temple Interior" id="location-image">
+                <img src="treasure_found.png" alt="Treasure Found" id="location-image">
+            `;
+        }
+
+        // Game Over
+        function gameOver() {
+            let gameOutput = document.getElementById("game-output");
+            gameOutput.innerHTML = `
+                <p>Game Over. Try again!</p>
+                <button class="btn" onclick="intro()">Start Again</button>
+            `;
+        }
+
+        // Initialize Game
+        intro();
+    </script>
+
+</body>
+</html>
