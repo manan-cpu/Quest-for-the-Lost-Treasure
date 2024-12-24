@@ -1,6 +1,6 @@
 # Quest for the Lost Treasure Game
 
-Welcome to **Quest for the Lost Treasure**, an interactive adventure game where your decisions determine your fate as you search for the legendary Lost Treasure of Eldoria. 
+Welcome to **Quest for the Lost Treasure**, an interactive adventure game where your decisions determine your fate as you search for the legendary Lost Treasure of Eldoria.
 
 This game is designed to provide a text-based adventure where you make crucial decisions in various scenarios, such as navigating through the Dark Forest, climbing the Mountain Path, and more. Your goal is to explore, fight boars, solve mysteries, and find treasure!
 
@@ -8,7 +8,7 @@ This game is designed to provide a text-based adventure where you make crucial d
 
 You can play the game directly on Replit by clicking the link below:
 
-[Play Quest for the Lost Treasure](https://4cb718a3-1a8f-4481-93cc-d206846860e3-00-2xpboou4wqql0.pike.replit.dev/)
+[**Play Quest for the Lost Treasure**](https://4cb718a3-1a8f-4481-93cc-d206846860e3-00-2xpboou4wqql0.pike.replit.dev)
 
 ## How to Play
 
@@ -23,16 +23,22 @@ You can play the game directly on Replit by clicking the link below:
 - **Unique Scenarios:** Battle wild boars, investigate glowing objects, and sneak past dragons to uncover the treasure.
 - **Multiple Outcomes:** Depending on your choices, the story may end in a victory, defeat, or discovery.
 
-## Installation (Optional)
+## Screenshots
 
-If you want to run the game locally, you can clone this repository and run it on your local machine. Follow the steps below:
+- **Town Square:**
+    ![Town Square](town_square.png)
 
-1. Clone the repository:
+- **Dark Forest Encounter:**
+    ![Dark Forest](dark_forest.png)
 
+- **Mountain Path:**
+    ![Mountain Path](mountain_path.png)
 
-License:
-This project is open-source and licensed under the MIT License. See the LICENSE file for more information.
+- **Treasure Found:**
+    ![Treasure Found](treasure_found.png)
 
-Created for Hack Club:
-Yes, this project was created for the High Seas Hack Club.
+## Contributing
+
+If you would like to contribute to this project, feel free to open a pull request! Suggestions, bug fixes, and new features are always welcome.
+
 
